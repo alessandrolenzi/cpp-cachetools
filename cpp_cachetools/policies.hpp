@@ -48,8 +48,8 @@ namespace policies {
     private:
 
         void evict() {
-            auto last = storage.end()--;
-            auto key = last->first;
+            auto last = storage.back();
+            auto key = last.first;
             storage.pop_back();
             cache.erase(key);
         }
