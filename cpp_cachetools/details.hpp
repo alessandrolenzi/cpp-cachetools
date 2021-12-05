@@ -3,6 +3,7 @@
 
 #include <functional>
 #include <mutex>
+#include <memory>
 
 namespace details {
         template<typename CacheType, typename... Args>
