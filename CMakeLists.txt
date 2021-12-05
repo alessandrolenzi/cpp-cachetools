@@ -37,6 +37,7 @@ target_link_libraries(
         tests
         gtest
         gtest_main
+        pthread
 )
 include(GoogleTest)
 gtest_discover_tests(tests)
