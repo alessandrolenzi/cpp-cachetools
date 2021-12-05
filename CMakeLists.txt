@@ -8,7 +8,7 @@ if(EXISTS ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
     message("Rebuilding from found ${CMAKE_BINARY_DIR}/conanbuildinfo.cmake")
 else()
     execute_process(
-            COMMAND bash -c "conan install .. --remote=conancenter --build=all"
+            COMMAND bash -c "conan install .. --remote=conancenter --build"
             OUTPUT_VARIABLE CONAN_OUT
     )
     message("Conan install output is ${CONAN_OUT}")
@@ -37,6 +37,7 @@ target_link_libraries(
         tests
         gtest
         gtest_main
+        pthread
 )
 include(GoogleTest)
 gtest_discover_tests(tests)
