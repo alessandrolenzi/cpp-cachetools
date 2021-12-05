@@ -87,6 +87,7 @@ namespace details {
 
         template<typename T>
         struct hash: std::hash<T> {};
+
         template<int Size, int Index, typename... Args>
         struct _hash {
             std::size_t operator()(const std::tuple<Args...>& tuple) {
@@ -95,7 +96,7 @@ namespace details {
         };
 
         template<int Size, typename...Args>
-        struct _hash<Size, Size-1, Args...> {
+        struct _hash<Size, Size -1, Args...> {
             std::size_t operator()(const std::tuple<Args...> &tuple) {
                 return hash_helper(std::get<Size-1>(tuple));
             }
