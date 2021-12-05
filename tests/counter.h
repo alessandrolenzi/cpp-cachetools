@@ -3,7 +3,7 @@
 #include <unordered_map>
 #include <functional>
 
-struct MyCounter {
+struct CallCounter {
     void increment(int value) {
         auto&& called_iter = counter.find(value);
         if(called_iter == counter.end()) {
@@ -26,9 +26,9 @@ struct MyCounter {
 };
 
 namespace std {
-    template <> struct hash<std::shared_ptr<MyCounter>>
+    template <> struct hash<std::shared_ptr<CallCounter>>
     {
-        size_t operator()(const std::shared_ptr<MyCounter> &x) const
+        size_t operator()(const std::shared_ptr<CallCounter> &x) const
         {
             return 0;
         }

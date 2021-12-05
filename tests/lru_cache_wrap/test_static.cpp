@@ -6,16 +6,16 @@
 class LRUCacheTest : public ::testing::Test {
 protected:
     void SetUp() override {
-        counter = std::make_shared<MyCounter>();
+        counter = std::make_shared<CallCounter>();
     }
     static int test_function(int value) {
         counter->increment(value);
         return value * 2;
     }
-    static std::shared_ptr<MyCounter> counter;
+    static std::shared_ptr<CallCounter> counter;
 };
 
-std::shared_ptr<MyCounter> LRUCacheTest::counter{};
+std::shared_ptr<CallCounter> LRUCacheTest::counter{};
 
 TEST_F(LRUCacheTest, CallsOnce) {
     auto &&wrapped = LRUCache::wrap(LRUCacheTest::test_function, 2);
