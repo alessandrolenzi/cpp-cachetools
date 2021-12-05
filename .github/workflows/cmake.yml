@@ -24,7 +24,7 @@ jobs:
       uses: turtlebrowser/get-conan@v1.0
     
     - name: Setup Conan
-      run: conan profile new default --detect
+      run: conan profile new default --detect && conan profile update settings.compiler.libcxx=libstdc++11 default
       
     - name: Install Conan Dependencies
       run: mkdir build && cd build && conan install .. --build
