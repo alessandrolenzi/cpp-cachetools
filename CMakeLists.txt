@@ -26,7 +26,9 @@ enable_testing()
 
 add_executable(
         tests
-        tests/test_lru_cache_wrap.cpp
+        tests/lru_cache_wrap/test_static.cpp
+        tests/lru_cache_wrap/test_lambda.cpp
+        tests/lru_cache_wrap/test_free_function.cpp
 )
 target_include_directories(
         tests
