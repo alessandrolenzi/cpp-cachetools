@@ -29,7 +29,10 @@ add_executable(
         tests/lru_cache_wrap/test_static.cpp
         tests/lru_cache_wrap/test_lambda.cpp
         tests/lru_cache_wrap/test_free_function.cpp
+        tests/lru_cache_wrap/test_member_function.cpp
+        tests/lru_cache/test_lru_cache.cpp
 )
+
 target_include_directories(
         tests
         PUBLIC
