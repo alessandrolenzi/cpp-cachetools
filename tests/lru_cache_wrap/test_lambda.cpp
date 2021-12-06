@@ -72,3 +72,17 @@ TEST(LRUCacheWrapLambda, WorksWithNoParameterLambda) {
     EXPECT_EQ(wrapped(), 1);
     EXPECT_EQ(counter->count_of(1), 1);
 }
+
+
+TEST(LRUCAcheWrapLambda, WorksWithVoidVoidLambda) {
+    auto &&counter = std::make_shared<CallCounter>();
+    auto lambda = [counter](){
+        counter->increment(1);
+    };
+    auto&& wrapped = LRUCache::wrap(lambda, 2);
+    EXPECT_EQ(counter->count_of(1), 0);
+    wrapped();
+    EXPECT_EQ(counter->count_of(1), 1);
+    wrapped();
+    EXPECT_EQ(counter->count_of(1), 1);
+}
