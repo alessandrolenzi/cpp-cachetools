@@ -8,6 +8,8 @@
 
 
 struct LRUCache: Cache<policies::Builder<policies::LRU>::with_index<indexes::HashedIndex>::Class> {};
+#define LRUCACHE_MEMBER_FUNCTION(SIZE, TYPE, NAME, PARAMS, BODY) std::function<TYPE PARAMS> NAME = LRUCache::wrap([this] PARAMS BODY, SIZE);
+
 struct TTLCache: Cache<policies::Builder<policies::TTL<std::chrono::steady_clock>::Class>::with_index<indexes::HashedIndex>::Class> {};
 
 
