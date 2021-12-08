@@ -12,6 +12,4 @@ struct LRUCache: Cache<policies::Builder<policies::LRU>::with_index<indexes::Has
 
 struct TTLCache: Cache<policies::Builder<policies::TTL<std::chrono::steady_clock>::Class>::with_index<indexes::HashedIndex>::Class> {};
 
-
-
 #endif //CPP_CACHE_TOOLS_HPP
