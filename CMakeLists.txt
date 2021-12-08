@@ -31,6 +31,8 @@ add_executable(
         tests/lru_cache_wrap/test_free_function.cpp
         tests/lru_cache_wrap/test_member_function.cpp
         tests/lru_cache/test_lru_cache.cpp
+        tests/ttl_cache/ttl_cache.cpp
+        tests/fake_clock/fake_clock.cc
 )
 
 target_include_directories(

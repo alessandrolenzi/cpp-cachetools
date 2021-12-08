@@ -90,7 +90,7 @@ namespace policies {
                 if (this->max_size != 0 && storage.size() == this->max_size) {
                     evict();
                 }
-                auto expiration = clock::now() + 60s;
+                auto expiration = clock::now() + duration;
                 auto reference = storage.insert(storage.end(), std::make_tuple(key, value, expiration));
                 cache.emplace(key, reference);
             }
@@ -102,7 +102,6 @@ namespace policies {
             }
 
             void clean_expired() {
-                auto now = std::chrono::system_clock::now();
                 auto iterator = storage.begin();
                 while (iterator != storage.end() && this->expired(*iterator)) {
                     auto key = std::get<0>(*iterator);

@@ -1,0 +1,3 @@
+[submodule "tests/fake_clock"]
+	path = tests/fake_clock
+	url = https://github.com/korfuri/fake_clock.git

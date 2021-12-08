@@ -20,6 +20,10 @@ int a_void_int_function() {
     return default_counter->count_of(1);
 }
 
+void a_void_void_function() {
+    default_counter->increment(0);
+}
+
 TEST(LRUCacheFreeFunction, CallsOnlyOnce) {
     auto &&counter = std::make_shared<CallCounter>();
     auto &&wrapped = LRUCache::wrap(my_function, 2);
@@ -48,4 +52,14 @@ TEST(LRUCacheFreeFunction, CallsOnlyOnceWithNoParameter) {
     EXPECT_EQ(default_counter->count_of(1), 1);
     EXPECT_EQ(wrapped(), 1);
     EXPECT_EQ(default_counter->count_of(1), 1);
+}
+
+TEST(LRUCacheFreeFunction, CallsOnlyOnceWithNoParameterAndNoReturn) {
+    default_counter = std::make_shared<CallCounter>();
+    auto &&wrapped = LRUCache::wrap(a_void_void_function, 2);
+    EXPECT_EQ(default_counter->count_of(0), 0);
+    wrapped();
+    EXPECT_EQ(default_counter->count_of(0), 1);
+    wrapped();
+    EXPECT_EQ(default_counter->count_of(0), 1);
 }
