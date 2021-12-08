@@ -27,7 +27,7 @@ jobs:
       run: conan profile new default --detect && conan profile update settings.compiler.libcxx=libstdc++11 default
 
     - name: Init git submodules
-      run: git submodule init
+      run: git submodule update --init --recursive
       
     - name: Install Conan Dependencies
       run: mkdir build && cd build && conan install .. --build
